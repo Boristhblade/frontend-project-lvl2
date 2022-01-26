@@ -9,28 +9,28 @@ const answer = `{
   + verbose: true
 }`;
 const testJson1 = {
-  "host": "hexlet.io",
-  "timeout": 50,
-  "proxy": "123.234.53.22",
-  "follow": false
+  host: 'hexlet.io',
+  timeout: 50,
+  proxy: '123.234.53.22',
+  follow: false,
 };
 const testJson2 = {
-  "timeout": 20,
-  "verbose": true,
-  "host": "hexlet.io"
-}
+  timeout: 20,
+  verbose: true,
+  host: 'hexlet.io',
+};
 
 test('buildDiffString', () => {
   expect(buildDiffString(testJson1, testJson2)).toBe(answer);
-  expect(buildDiffString({}, {})).toBe("{\n}");
-  expect(buildDiffString({ a: 1 }, { a: 1})).toBe("{\n    a: 1\n}");
+  expect(buildDiffString({}, {})).toBe('{\n}');
+  expect(buildDiffString({ a: 1 }, { a: 1 })).toBe('{\n    a: 1\n}');
 });
 
 test('parseFile', () => {
   expect(parseFile('__fixtures__/file2.JSON')).toEqual({
-    "timeout": 20,
-    "verbose": true,
-    "host": "hexlet.io"
+    timeout: 20,
+    verbose: true,
+    host: 'hexlet.io',
   });
 });
 

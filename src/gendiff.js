@@ -11,9 +11,12 @@ const buildDiffString = (file1, file2) => {
   const file2Keys = _.keys(file2);
   const allKeys = _.union(file1Keys, file2Keys).sort();
   const result = allKeys.reduce((acc, key) => {
-    if (!file1Keys.includes(key) || !file2Keys.includes(key)) {
-      !file1Keys.includes(key) ? acc.push(`  + ${key}: ${file2[key]}\n`)
-        :acc.push(`  - ${key}: ${file1[key]}\n`);
+    if (!file1Keys.includes(key)) {
+      acc.push(`  + ${key}: ${file2[key]}\n`);
+      return acc;
+    }
+    if (!file2Keys.includes(key)) {
+      acc.push(`  - ${key}: ${file1[key]}\n`);
       return acc;
     }
     if (file1[key] === file2[key]) {
