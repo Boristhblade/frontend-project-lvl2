@@ -1,13 +1,10 @@
 import { readFileSync } from 'fs';
-import _ from "lodash";
+import _ from 'lodash';
 import { cwd } from 'process';
 import { resolve } from 'path';
 
 const parseFile = (filePath) => JSON
-  .parse(readFileSync(
-    resolve(cwd(filePath), filePath), 'utf8'
-  ));
-
+  .parse(readFileSync(resolve(cwd(filePath), filePath), 'utf8'));
 
 const buildDiffString = (file1, file2) => {
   const file1Keys = Object.keys(file1);
@@ -29,8 +26,11 @@ const buildDiffString = (file1, file2) => {
     acc.push(`  -${key}: ${file1[key]},\n  +${key}: ${file2[key]},\n`);
     return acc;
   }, ['{\n']);
-  console.log(result.join('') + "}");
-  return result.join('') + "}";
+  console.log(`${result.join('')}}`);
+  return `${result.join('')}}`;
 };
 
-export default (filepath1, filepath2) => buildDiffString(parseFile(filepath1), parseFile(filepath2));
+export default (filepath1, filepath2) => buildDiffString(
+  parseFile(filepath1),
+  parseFile(filepath2),
+);

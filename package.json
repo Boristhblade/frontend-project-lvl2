@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "frontend project lvl 2",
   "type": "module",
-  "main": "bin/gendiff.js",
+  "main": "src/gendiff.js",
   "bin": {
-    "gendiff": "bin/gendiff.js"
+    "gendiff": "bin/index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "make test"
   },
   "repository": {
     "type": "git",
@@ -22,9 +22,13 @@
   "homepage": "https://github.com/Boristhblade/frontend-project-lvl2#readme",
   "dependencies": {
     "commander": "^8.3.0",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "lodash": "^4.17.21"
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "jest": "^27.4.7"
   }
 }
