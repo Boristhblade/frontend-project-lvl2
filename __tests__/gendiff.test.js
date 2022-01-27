@@ -41,4 +41,6 @@ test('parseFile', () => {
 
 test('gendiff', () => {
   expect(gendiff('__fixtures__/file1.JSON', '__fixtures__/file2.JSON')).toBe(answer);
+  expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.yaml')).toBe(answer);
+  expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.JSON')).toBe(answer);
 });
