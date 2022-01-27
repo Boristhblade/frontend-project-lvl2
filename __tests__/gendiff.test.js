@@ -32,6 +32,11 @@ test('parseFile', () => {
     verbose: true,
     host: 'hexlet.io',
   });
+  expect(parseFile('__fixtures__/file2.yaml')).toEqual({
+    timeout: 20,
+    verbose: true,
+    host: 'hexlet.io',
+  });
 });
 
 test('gendiff', () => {
