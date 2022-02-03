@@ -53,6 +53,19 @@ test('buildDiffTree', () => {
   expect(buildDiffTree({ a: 1 }, { a: 1 })).toEqual([{ key: 'a', value: 1, prefix: ' ' }]);
 });
 
+test('parseFile', () => {
+  expect(parseFile('__fixtures__/file3.JSON')).toEqual({
+    timeout: 20,
+    verbose: true,
+    host: 'hexlet.io',
+  });
+  expect(parseFile('__fixtures__/file3.yaml')).toEqual({
+    timeout: 20,
+    verbose: true,
+    host: 'hexlet.io',
+  });
+});
+
 test('gendiff', () => {
   expect(gendiff('__fixtures__/file1.JSON', '__fixtures__/file2.JSON')).toBe(answer);
   expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.yaml')).toBe(answer);
