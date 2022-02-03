@@ -50,11 +50,11 @@ test('buildDiffTree', () => {
   const file1json = parseFile('__fixtures__/file1.JSON');
   const file2json = parseFile('__fixtures__/file2.JSON');
   expect(formater(buildDiffTree(file1json, file2json))).toBe(answer);
-  expect(buildDiffTree({ a: 1 }, { a: 1 })).toEqual({ key: 'a', value: 1, prefix: ' ' });
+  expect(buildDiffTree({ a: 1 }, { a: 1 })).toEqual([{ key: 'a', value: 1, prefix: ' ' }]);
 });
 
 test('gendiff', () => {
-  expect(formater(gendiff('__fixtures__/file1.JSON', '__fixtures__/file2.JSON'))).toBe(answer);
-  expect(formater(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.yaml'))).toBe(answer);
-  expect(formater(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.JSON'))).toBe(answer);
+  expect(gendiff('__fixtures__/file1.JSON', '__fixtures__/file2.JSON')).toBe(answer);
+  expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.yaml')).toBe(answer);
+  expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.JSON')).toBe(answer);
 });
