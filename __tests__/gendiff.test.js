@@ -1,29 +1,56 @@
-import { gendiff, buildDiffString, parseFile } from '../src/gendiff.js';
+import { gendiff, buildDiffTree, parseFile } from '../src/gendiff.js';
+import formater from '../src/stylish.js';
 
 const answer = `{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
+  common: {
+    + follow: false
+      setting1: Value 1
+    - setting2: 200
+    - setting3: true
+    + setting3: null
+    + setting4: blah blah
+    + setting5: {
+          key5: value5
+      }
+      setting6: {
+          doge: {
+            - wow: 
+            + wow: so much
+          }
+          key: value
+        + ops: vops
+      }
+  }
+  group1: {
+    - baz: bas
+    + baz: bars
+      foo: bar
+    - nest: {
+          key: value
+      }
+    + nest: str
+  }
+- group2: {
+      abc: 12345
+      deep: {
+          id: 45
+      }
+  }
++ group3: {
+      deep: {
+          id: {
+              number: 45
+          }
+      }
+      fee: 100500
+  }
 }`;
-const testJson1 = {
-  host: 'hexlet.io',
-  timeout: 50,
-  proxy: '123.234.53.22',
-  follow: false,
-};
-const testJson2 = {
-  timeout: 20,
-  verbose: true,
-  host: 'hexlet.io',
-};
 
-test('buildDiffString', () => {
-  expect(buildDiffString(testJson1, testJson2)).toBe(answer);
-  expect(buildDiffString({}, {})).toBe('{\n}');
-  expect(buildDiffString({ a: 1 }, { a: 1 })).toBe('{\n    a: 1\n}');
+test('buildDiffTree', () => {
+  const file1json = parseFile('__fixtures__/file1.JSON');
+  const file2json = parseFile('__fixtures__/file2.JSON');
+  expect(formater(buildDiffTree(file1json, file2json))).toBe(answer);
+  expect(buildDiffTree({ a: 1 }, { a: 1 })).toEqual({ key: 'a', value: 1, prefix: ' ' });
 });
 
 test('parseFile', () => {
@@ -40,7 +67,7 @@ test('parseFile', () => {
 });
 
 test('gendiff', () => {
-  expect(gendiff('__fixtures__/file1.JSON', '__fixtures__/file2.JSON')).toBe(answer);
-  expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.yaml')).toBe(answer);
-  expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.JSON')).toBe(answer);
+  expect(formater(gendiff('__fixtures__/file1.JSON', '__fixtures__/file2.JSON'))).toBe(answer);
+  expect(formater(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.yaml'))).toBe(answer);
+  expect(formater(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.JSON'))).toBe(answer);
 });
