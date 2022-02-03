@@ -34,7 +34,7 @@ const formater = (tree) => {
         }
         return `${currentIndent}  ${getPrefix(item)} ${getKey(item)}: ${stringify(getValue(item), depth + 1)}\n`;
       })
-      .join('')}${currentIndent}}\n`;
+      .join('')}${currentIndent}}${depth === 0 ? '' : '\n'}`;
   };
 
   return iter(tree, 0);
