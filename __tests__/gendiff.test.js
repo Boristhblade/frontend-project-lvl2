@@ -1,5 +1,6 @@
-import { gendiff, buildDiffTree, parseFile } from '../src/gendiff.js';
-import formater from '../src/stylish.js';
+import { gendiff, buildDiffTree } from '../src/gendiff.js';
+import { stylish, plain } from '../src/stylish.js';
+import parseFile from '../src/parsers.js';
 
 const answer = `{
     common: {
@@ -61,7 +62,7 @@ Property 'group3' was added with value: [complex value]`;
 test('buildDiffTree', () => {
   const file1json = parseFile('__fixtures__/file1.JSON');
   const file2json = parseFile('__fixtures__/file2.JSON');
-  expect(formater(buildDiffTree(file1json, file2json))).toBe(answer);
+  expect(stylish(buildDiffTree(file1json, file2json))).toBe(answer);
   expect(buildDiffTree({ a: 1 }, { a: 1 })).toEqual([{ key: 'a', value: [1], status: 'unchanged' }]);
 });
 
@@ -79,7 +80,7 @@ test('parseFile', () => {
 });
 
 test('gendiff', () => {
-  expect(gendiff('__fixtures__/file1.JSON', '__fixtures__/file2.JSON')).toBe(answer);
-  expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.yaml')).toBe(answer);
-  expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.JSON')).toBe(answer);
+  expect(gendiff('__fixtures__/file1.JSON', '__fixtures__/file2.JSON', stylish)).toBe(answer);
+  expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.yaml', stylish)).toBe(answer);
+  expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.JSON', plain)).toBe(answerPlain);
 });
