@@ -46,11 +46,23 @@ const answer = `{
     }
 }`;
 
+const answerPlain = `Property 'common.follow' was added with value: false
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: 'blah blah'
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: 'vops'
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]`;
+
 test('buildDiffTree', () => {
   const file1json = parseFile('__fixtures__/file1.JSON');
   const file2json = parseFile('__fixtures__/file2.JSON');
   expect(formater(buildDiffTree(file1json, file2json))).toBe(answer);
-  expect(buildDiffTree({ a: 1 }, { a: 1 })).toEqual([{ key: 'a', value: 1, prefix: ' ' }]);
+  expect(buildDiffTree({ a: 1 }, { a: 1 })).toEqual([{ key: 'a', value: [1], status: 'unchanged' }]);
 });
 
 test('parseFile', () => {
