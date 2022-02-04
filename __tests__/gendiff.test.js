@@ -1,6 +1,7 @@
 import { gendiff, buildDiffTree } from '../src/gendiff.js';
-import { stylish, plain } from '../src/stylish.js';
+import stylish from '../src/formatters/stylish.js';
 import parseFile from '../src/parsers.js';
+import plain from '../src/formatters/plain.js';
 
 const answer = `{
     common: {
