@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import {
   getChildren, getKey, getStatus, getValue,
-} from '../gendiff.js';
+} from '../diffTree.js';
 
 const plain = (tree) => {
   const valuePlain = (data) => {

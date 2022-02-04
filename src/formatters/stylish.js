@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { getValue, getKey, getChildren } from '../gendiff.js';
+import { getValue, getKey, getChildren } from '../diffTree.js';
 
 const generatePrefix = (data) => {
   switch (data.status) {

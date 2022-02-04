@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import { gendiff } from '../src/gendiff.js';
+import gendiff from '../src/gendiff.js';
 import stylish from '../src/formatters/stylish.js';
 import plain from '../src/formatters/plain.js';
 import json from '../src/formatters/json.js';
