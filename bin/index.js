@@ -2,7 +2,9 @@
 
 import { Command } from 'commander';
 import { gendiff } from '../src/gendiff.js';
-import { stylish, plain } from '../src/stylish.js';
+import stylish from '../src/formatters/stylish.js';
+import plain from '../src/formatters/plain.js';
+import json from '../src/formatters/json.js';
 
 const program = new Command();
 program
@@ -16,6 +18,9 @@ program
     switch (options.format) {
       case 'plain':
         chosenFormater = plain;
+        break;
+      case 'json':
+        chosenFormater = json;
         break;
       default:
         chosenFormater = stylish;

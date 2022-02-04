@@ -22,6 +22,14 @@ const buildDiffTree = (data1, data2) => {
   });
 };
 
+const getChildren = (data) => data.children;
+
+const getStatus = (data) => data.status;
+
+const getKey = (data) => data.key;
+
+const getValue = (data) => data.value;
+
 const gendiff = (filepath1, filepath2, formater) => formater(
   buildDiffTree(
     parseFile(filepath1),
@@ -29,4 +37,11 @@ const gendiff = (filepath1, filepath2, formater) => formater(
   ),
 );
 
-export { gendiff, buildDiffTree };
+export {
+  gendiff,
+  buildDiffTree,
+  getChildren,
+  getKey,
+  getStatus,
+  getValue,
+};
