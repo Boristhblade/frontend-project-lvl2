@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { getChildren, getKey, getStatus } from '../gendiff.js';
+import { getChildren, getKey, getStatus, getValue } from '../gendiff.js';
 
 const plain = (tree) => {
   const valuePlain = (data) => {
