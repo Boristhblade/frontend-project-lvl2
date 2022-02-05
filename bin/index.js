@@ -14,22 +14,22 @@ program
   .arguments('<filepath1> <filepath2>')
   .action((filepath1, filepath2) => {
     const options = program.opts();
-    let chosenFormater;
+    const chosenFormater = [];
     switch (options.format) {
       case 'plain':
-        chosenFormater = plain;
+        chosenFormater[0] = plain;
         break;
       case 'json':
-        chosenFormater = json;
+        chosenFormater[0] = json;
         break;
       default:
-        chosenFormater = stylish;
+        chosenFormater[0] = stylish;
     }
     console.log(
       gendiff(
         filepath1,
         filepath2,
-        chosenFormater,
+        chosenFormater[0],
       ),
     );
   });
