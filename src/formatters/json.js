@@ -1,3 +1,3 @@
-const json = (tree) => tree.map((item) => JSON.stringify(item));
+const json = (tree) => JSON.stringify(tree);
 
 export default json;

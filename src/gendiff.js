@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import { buildDiffTree } from './diffTree.js';
 import parseFile from './parsers.js';
 
