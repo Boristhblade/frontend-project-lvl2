@@ -1,7 +1,6 @@
 import { buildDiffTree } from '../src/diffTree.js';
 import stylish from '../src/formatters/stylish.js';
 import parseFile from '../src/parsers.js';
-import plain from '../src/formatters/plain.js';
 import gendiff from '../src/gendiff.js';
 
 const answer = `{
@@ -82,7 +81,7 @@ test('parseFile', () => {
 });
 
 test('gendiff', () => {
-  expect(gendiff('__fixtures__/file1.JSON', '__fixtures__/file2.JSON', stylish)).toBe(answer);
-  expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.yaml', stylish)).toBe(answer);
-  expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.JSON', plain)).toBe(answerPlain);
+  expect(gendiff('__fixtures__/file1.JSON', '__fixtures__/file2.JSON', 'stylish')).toBe(answer);
+  expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.yaml', 'stylish')).toBe(answer);
+  expect(gendiff('__fixtures__/file1.yml', '__fixtures__/file2.JSON', 'plain')).toBe(answerPlain);
 });
