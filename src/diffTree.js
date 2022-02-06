@@ -3,7 +3,7 @@ import _ from 'lodash';
 const buildDiffTree = (data1, data2) => {
   const data1Keys = _.keys(data1);
   const data2Keys = _.keys(data2);
-  const allKeys = _.union(data2Keys, data1Keys).sort();
+  const allKeys = _.sortBy(_.union(data2Keys, data1Keys));
   return allKeys.map((key) => {
     if (!data1Keys.includes(key)) {
       return { key, value: [data2[key]], status: 'added' };

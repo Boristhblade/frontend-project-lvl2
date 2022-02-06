@@ -15,19 +15,18 @@ const plain = (tree) => {
   };
 
   const iter = (data, path) => _.compact(data.flatMap((item) => {
-    const newPath = _.compact(path.split('.'));
-    newPath.push(getKey(item));
+    const newPath = _.compact(`${path}.${getKey(item)}`.split('.')).join('.');
     if (getChildren(item)) {
-      return iter(getChildren(item), newPath.join('.'));
+      return iter(getChildren(item), newPath);
     }
     if (getStatus(item) === 'added') {
-      return `Property '${newPath.join('.')}' was added with value: ${valuePlain(getValue(item)[0])}`;
+      return `Property '${newPath}' was added with value: ${valuePlain(getValue(item)[0])}`;
     }
     if (getStatus(item) === 'removed') {
-      return `Property '${newPath.join('.')}' was removed`;
+      return `Property '${newPath}' was removed`;
     }
     if (getStatus(item) === 'updated') {
-      return `Property '${newPath.join('.')}' was updated. From ${valuePlain(getValue(item)[0])} to ${valuePlain(getValue(item)[1])}`;
+      return `Property '${newPath}' was updated. From ${valuePlain(getValue(item)[0])} to ${valuePlain(getValue(item)[1])}`;
     }
     return '';
   }))
