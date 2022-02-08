@@ -1,6 +1,6 @@
-import { buildDiffTree } from '../src/diffTree.js';
-import stylish from '../src/formatters/stylish.js';
-import parseFile from '../src/parsers.js';
+// import { buildDiffTree } from '../src/diffTree.js';
+// import stylish from '../src/formatters/stylish.js';
+// import { parseJson, parseYml } from '../src/parsers.js';
 import gendiff from '../src/gendiff.js';
 
 const answer = `{
@@ -59,26 +59,6 @@ Property 'group1.baz' was updated. From 'bas' to 'bars'
 Property 'group1.nest' was updated. From [complex value] to 'str'
 Property 'group2' was removed
 Property 'group3' was added with value: [complex value]`;
-
-test('buildDiffTree', () => {
-  const file1json = parseFile('__fixtures__/file1.JSON');
-  const file2json = parseFile('__fixtures__/file2.JSON');
-  expect(stylish(buildDiffTree(file1json, file2json))).toBe(answer);
-  expect(buildDiffTree({ a: 1 }, { a: 1 })).toEqual([{ key: 'a', value: [1], status: 'unchanged' }]);
-});
-
-test('parseFile', () => {
-  expect(parseFile('__fixtures__/file3.JSON')).toEqual({
-    timeout: 20,
-    verbose: true,
-    host: 'hexlet.io',
-  });
-  expect(parseFile('__fixtures__/file3.yaml')).toEqual({
-    timeout: 20,
-    verbose: true,
-    host: 'hexlet.io',
-  });
-});
 
 test('gendiff', () => {
   expect(gendiff('__fixtures__/file1.JSON', '__fixtures__/file2.JSON', 'stylish')).toBe(answer);
