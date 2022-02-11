@@ -5,6 +5,7 @@
 
 Console utitite, whitch generate gifference between two .JSON or .YAML files.
 Usage:
+    
     $ gendiff <firstFilePath>.json <secondFilePath>.json
 
 Asciinema:
