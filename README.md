@@ -9,13 +9,13 @@ Usage:
 
 Asciinema:
 
-  [Plain files](https://asciinema.org/a/ryokilv6Ml23D4YOXEBGnvOn3)
+  [![Watch the video](https://asciinema.org/a/ryokilv6Ml23D4YOXEBGnvOn3)
   
-  [Complex files](https://asciinema.org/a/2b0SDRf9LaBv00o2wRIaGcwXP)
+  [![Watch the video](https://asciinema.org/a/2b0SDRf9LaBv00o2wRIaGcwXP)
   
-  [Complex files with plain formater](https://asciinema.org/a/DTbNtP18Yj9sllVSsZWHZQ8uw)
+  [![Watch the video](https://asciinema.org/a/DTbNtP18Yj9sllVSsZWHZQ8uw)
   
-  [Complex files with JSON formater](https://asciinema.org/a/tXvmDrrdf2m6GEmhYm4S153oW)
+  [![Watch the video](https://asciinema.org/a/tXvmDrrdf2m6GEmhYm4S153oW)
   
 
 
