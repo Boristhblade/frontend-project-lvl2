@@ -9,13 +9,13 @@ Usage:
     $ gendiff <firstFilePath>.json <secondFilePath>.json
 
 Asciinema:
-
+  Plain files:
   [![asciicast](https://asciinema.org/a/ryokilv6Ml23D4YOXEBGnvOn3.png)](https://asciinema.org/a/ryokilv6Ml23D4YOXEBGnvOn3)
-  
+  Nested files:
   [![asciicast](https://asciinema.org/a/2b0SDRf9LaBv00o2wRIaGcwXP.png)](https://asciinema.org/a/ryokilv6Ml23D4YOXEBGnvOn3)
-  
+  Nested files with 'plain' formater:
   [![asciicast](https://asciinema.org/a/DTbNtP18Yj9sllVSsZWHZQ8uw.png)](https://asciinema.org/a/ryokilv6Ml23D4YOXEBGnvOn3)
-  
+  Nested files with 'json' formater:
   [![asciicast](https://asciinema.org/a/tXvmDrrdf2m6GEmhYm4S153oW.png)](https://asciinema.org/a/ryokilv6Ml23D4YOXEBGnvOn3)
   
 
