@@ -12,5 +12,5 @@ const testSheet = [
 test.each(testSheet)('File formats - %p %p', (a, b, expected, formater) => {
   const beforeFullPath = `${process.cwd()}/__fixtures__/file1.${a}`;
   const afterFullPath = `${process.cwd()}/__fixtures__/file2.${b}`;
-  expect(gendiff(beforeFullPath, afterFullPath, formater)).toBe(expected.toString());
+  expect(gendiff(beforeFullPath, afterFullPath, formater)).toBe(expected);
 });
