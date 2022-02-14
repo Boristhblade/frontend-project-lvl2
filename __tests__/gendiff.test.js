@@ -1,6 +1,3 @@
-// import { buildDiffTree } from '../src/diffTree.js';
-// import stylish from '../src/formatters/stylish.js';
-// import { parseJson, parseYml } from '../src/parsers.js';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { cwd } from 'process';
@@ -15,5 +12,5 @@ const testSheet = [
 test.each(testSheet)('File formats - %p %p', (a, b, expected, formater) => {
   const beforeFullPath = `${process.cwd()}/__fixtures__/file1.${a}`;
   const afterFullPath = `${process.cwd()}/__fixtures__/file2.${b}`;
-  expect(gendiff(beforeFullPath, afterFullPath, formater)).toBe(expected);
+  expect(gendiff(beforeFullPath, afterFullPath, formater)).toBe(expected.toString());
 });
