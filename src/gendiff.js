@@ -8,7 +8,7 @@ import pickFormater from './formatters/index.js';
 
 const readFile = (filePath) => readFileSync(resolve(cwd(filePath), filePath), 'utf8');
 
-const getExtension = (filePath) =>_.last(filePath.split('.')).toLowerCase();
+const getExtension = (filePath) => _.last(filePath.split('.')).toLowerCase();
 
 const gendiff = (filepath1, filepath2, formater) => {
   const formaterPicked = pickFormater(formater);
