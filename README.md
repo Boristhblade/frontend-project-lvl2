@@ -10,13 +10,13 @@ Usage:
 
 Asciinema:
   Plain files:
-  [![asciicast](https://asciinema.org/a/ryokilv6Ml23D4YOXEBGnvOn3.png)](https://asciinema.org/a/ryokilv6Ml23D4YOXEBGnvOn3)
+  [![asciicast](https://asciinema.org/a/S5dLSalb0ZKuqFzClZDYcN7mv.png)](https://asciinema.org/a/S5dLSalb0ZKuqFzClZDYcN7mv)
   Nested files:
-  [![asciicast](https://asciinema.org/a/2b0SDRf9LaBv00o2wRIaGcwXP.png)](https://asciinema.org/a/2b0SDRf9LaBv00o2wRIaGcwXP)
+  [![asciicast](https://asciinema.org/a/1B75jQXno9bpcm2hOAmMUpnnX.png)](https://asciinema.org/a/1B75jQXno9bpcm2hOAmMUpnnX)
   Nested files with 'plain' formater:
-  [![asciicast](https://asciinema.org/a/DTbNtP18Yj9sllVSsZWHZQ8uw.png)](https://asciinema.org/a/DTbNtP18Yj9sllVSsZWHZQ8uw)
+  [![asciicast](https://asciinema.org/a/3MIrSQEasr0tSN6shYyJyHPsr.png)](https://asciinema.org/a/3MIrSQEasr0tSN6shYyJyHPsr)
   Nested files with 'json' formater:
-  [![asciicast](https://asciinema.org/a/tXvmDrrdf2m6GEmhYm4S153oW.png)](https://asciinema.org/a/tXvmDrrdf2m6GEmhYm4S153oW)
+  [![asciicast](https://asciinema.org/a/RrmukZ1O5bfTWyEwPOdg4bTEP.png)](https://asciinema.org/a/RrmukZ1O5bfTWyEwPOdg4bTEP)
   
 
 
