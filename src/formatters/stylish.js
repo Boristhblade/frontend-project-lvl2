@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { getValue, getKey, getChildren } from '../diffTree.js';
+import { getValue, getKey, getChildren, getStatus } from '../diffTree.js';
 
 const generatePrefix = (data) => {
   switch (data.status) {
@@ -32,15 +32,20 @@ const stylish = (tree) => {
     const currentIndent = ' '.repeat(indentSize);
     return `{\n${data
       .flatMap((item) => {
-        if (getChildren(item)) {
-          return `${currentIndent}    ${getKey(item)}: ${iter(getChildren(item), depth + 1)}`;
-        }
-        return generatePrefix(item).map((prefix, index) => {
-          if (!_.isObject(getValue(item))) {
-            return `${currentIndent}  ${prefix} ${getKey(item)}: ${getValue(item)[index]}\n`;
+        if (getStatus(item) === 'unchanged') {
+          if (getChildren(item)) {
+            return `${currentIndent}    ${getKey(item)}: ${iter(getChildren(item), depth + 1)}`;
           }
-          return `${currentIndent}  ${prefix} ${getKey(item)}: ${stringify((getValue(item)[index]), depth + 1)}\n`;
-        });
+          return `${currentIndent}    ${getKey(item)}: ${getValue(item)[0]}\n`;
+        }
+        if (getStatus(item) === 'added') {
+          return `${currentIndent}  + ${getKey(item)}: ${stringify(getValue(item)[0], depth + 1)}\n`;
+        }
+        if (getStatus(item) === 'removed') {
+          return `${currentIndent}  - ${getKey(item)}: ${stringify(getValue(item)[0], depth + 1)}\n`;
+        }
+        return [`${currentIndent}  - ${getKey(item)}: ${stringify(getValue(item)[0], depth + 1)}\n`,
+          `${currentIndent}  + ${getKey(item)}: ${stringify(getValue(item)[1], depth + 1)}\n`];
       })
       .join('')}${currentIndent}}${depth === 0 ? '' : '\n'}`;
   };
@@ -49,3 +54,5 @@ const stylish = (tree) => {
 };
 
 export default stylish;
+// `${currentIndent}  ${prefix} ${getKey(item)}: ${getValue(item)[index]}\n`;
+// `${currentIndent}  ${prefix} ${getKey(item)}: ${stringify((getValue(item)[index]), depth + 1)}\n`
