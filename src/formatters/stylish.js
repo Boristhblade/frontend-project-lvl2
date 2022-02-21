@@ -14,20 +14,20 @@ const generatePrefix = (data) => {
   }
 };
 
+const stringify = (obj, objDepth) => {
+  if (!_.isObject(obj)) {
+    return `${obj}`;
+  }
+  const currentIndentObj = ' '.repeat(objDepth * 4);
+  const lines = Object
+    .entries(obj)
+    .map(([key, val]) => `${currentIndentObj}    ${key}: ${stringify(val, objDepth + 1)}\n`);
+
+  return `{\n${lines.join('')}${currentIndentObj}}`;
+};
+
 const stylish = (tree) => {
   const iter = (data, depth = 0) => {
-    const stringify = (obj, objDepth) => {
-      if (!_.isObject(obj)) {
-        return `${obj}`;
-      }
-      const currentIndentObj = ' '.repeat(objDepth * 4);
-      const lines = Object
-        .entries(obj)
-        .map(([key, val]) => `${currentIndentObj}    ${key}: ${stringify(val, objDepth + 1)}\n`);
-
-      return `{\n${lines.join('')}${currentIndentObj}}`;
-    };
-
     const indentSize = depth * 4;
     const currentIndent = ' '.repeat(indentSize);
     return `{\n${data

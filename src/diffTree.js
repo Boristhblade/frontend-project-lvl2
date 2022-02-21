@@ -11,10 +11,10 @@ const buildDiffTree = (data1, data2) => {
     if (!data2Keys.includes(key)) {
       return { key, value: [data1[key]], status: 'removed' };
     }
-    if (data1[key] === data2[key]) {
+    if (_.isEqual(data1[key], data2[key])) {
       return { key, value: [data2[key]], status: 'unchanged' };
     }
-    if (_.isObject(data1[key]) && _.isObject(data2[key])) {
+    if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
       return { key, children: buildDiffTree(data1[key], data2[key]), status: 'unchanged' };
     }
     return { key, value: [data1[key], data2[key]], status: 'updated' };

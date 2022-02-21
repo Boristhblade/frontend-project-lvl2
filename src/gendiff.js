@@ -13,13 +13,13 @@ const getExtension = (filePath) => _.last(filePath.split('.')).toLowerCase();
 const gendiff = (filepath1, filepath2, formater) => {
   const formaterPicked = pickFormater(formater);
 
-  const parser1 = pickParser(getExtension(filepath1));
-  const parser2 = pickParser(getExtension(filepath2));
+  const extension1 = getExtension(filepath1);
+  const extension2 = getExtension(filepath2);
 
   return formaterPicked(
     buildDiffTree(
-      parser1(readFile(filepath1)),
-      parser2(readFile(filepath2)),
+      pickParser(readFile(filepath1), extension1),
+      pickParser(readFile(filepath2), extension2),
     ),
   );
 };
