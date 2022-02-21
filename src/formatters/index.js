@@ -11,7 +11,7 @@ const pickFormater = (formaterName) => {
     case 'json':
       return json;
     default:
-      throw new Error('Wrong formatter name');
+      return stylish;
   }
 };
 
