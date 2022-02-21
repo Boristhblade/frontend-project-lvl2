@@ -1,18 +1,7 @@
 import _ from 'lodash';
-import { getValue, getKey, getChildren, getStatus } from '../diffTree.js';
-
-const generatePrefix = (data) => {
-  switch (data.status) {
-    case 'added':
-      return ['+'];
-    case 'removed':
-      return ['-'];
-    case 'unchanged':
-      return [' '];
-    default:
-      return ['-', '+'];
-  }
-};
+import {
+  getValue, getKey, getChildren, getStatus,
+} from '../diffTree.js';
 
 const stringify = (obj, objDepth) => {
   if (!_.isObject(obj)) {
@@ -54,5 +43,3 @@ const stylish = (tree) => {
 };
 
 export default stylish;
-// `${currentIndent}  ${prefix} ${getKey(item)}: ${getValue(item)[index]}\n`;
-// `${currentIndent}  ${prefix} ${getKey(item)}: ${stringify((getValue(item)[index]), depth + 1)}\n`
