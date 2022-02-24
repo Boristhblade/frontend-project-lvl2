@@ -1,15 +1,11 @@
 import { load } from 'js-yaml';
 
-const parseJson = (fileString) => JSON.parse(fileString);
-
-const parseYml = (fileString) => load(fileString);
-
 const parsers = {
-  json: parseJson,
-  yml: parseYml,
-  yaml: parseYml,
+  json: JSON.parse,
+  yml: load,
+  yaml: load,
 };
 
-const pickParser = (fileString, extension) => parsers[extension](fileString);
+const pickParser = (data, format) => parsers[format](data);
 
 export default pickParser;

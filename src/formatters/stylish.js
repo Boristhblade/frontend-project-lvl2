@@ -21,20 +21,19 @@ const stylish = (tree) => {
     const currentIndent = ' '.repeat(indentSize);
     return `{\n${data
       .flatMap((item) => {
-        if (getStatus(item) === 'unchanged') {
-          if (getChildren(item)) {
+        switch (getStatus(item)) {
+          case 'nested':
             return `${currentIndent}    ${getKey(item)}: ${iter(getChildren(item), depth + 1)}`;
-          }
-          return `${currentIndent}    ${getKey(item)}: ${getValue(item)[0]}\n`;
+          case 'unchanged':
+            return `${currentIndent}    ${getKey(item)}: ${getValue(item)[0]}\n`;
+          case 'added':
+            return `${currentIndent}  + ${getKey(item)}: ${stringify(getValue(item)[0], depth + 1)}\n`;
+          case 'removed':
+            return `${currentIndent}  - ${getKey(item)}: ${stringify(getValue(item)[0], depth + 1)}\n`;
+          default:
+            return [`${currentIndent}  - ${getKey(item)}: ${stringify(getValue(item)[0], depth + 1)}\n`,
+              `${currentIndent}  + ${getKey(item)}: ${stringify(getValue(item)[1], depth + 1)}\n`];
         }
-        if (getStatus(item) === 'added') {
-          return `${currentIndent}  + ${getKey(item)}: ${stringify(getValue(item)[0], depth + 1)}\n`;
-        }
-        if (getStatus(item) === 'removed') {
-          return `${currentIndent}  - ${getKey(item)}: ${stringify(getValue(item)[0], depth + 1)}\n`;
-        }
-        return [`${currentIndent}  - ${getKey(item)}: ${stringify(getValue(item)[0], depth + 1)}\n`,
-          `${currentIndent}  + ${getKey(item)}: ${stringify(getValue(item)[1], depth + 1)}\n`];
       })
       .join('')}${currentIndent}}${depth === 0 ? '' : '\n'}`;
   };

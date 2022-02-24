@@ -11,17 +11,14 @@ const readFile = (filePath) => readFileSync(resolve(cwd(filePath), filePath), 'u
 const getExtension = (filePath) => _.last(filePath.split('.')).toLowerCase();
 
 const gendiff = (filepath1, filepath2, formater) => {
-  const formaterPicked = pickFormater(formater);
-
   const extension1 = getExtension(filepath1);
   const extension2 = getExtension(filepath2);
-
-  return formaterPicked(
-    buildDiffTree(
-      pickParser(readFile(filepath1), extension1),
-      pickParser(readFile(filepath2), extension2),
-    ),
+  const diffTree = buildDiffTree(
+    pickParser(readFile(filepath1), extension1),
+    pickParser(readFile(filepath2), extension2),
   );
+
+  return pickFormater(formater, diffTree);
 };
 
 export default gendiff;

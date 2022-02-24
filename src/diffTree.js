@@ -15,7 +15,7 @@ const buildDiffTree = (data1, data2) => {
       return { key, value: [data2[key]], status: 'unchanged' };
     }
     if (_.isPlainObject(data1[key]) && _.isPlainObject(data2[key])) {
-      return { key, children: buildDiffTree(data1[key], data2[key]), status: 'unchanged' };
+      return { key, children: buildDiffTree(data1[key], data2[key]), status: 'nested' };
     }
     return { key, value: [data1[key], data2[key]], status: 'updated' };
   });
